@@ -30,6 +30,7 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeLiveData()
+        initViewListeners()
     }
 
     private fun observeLiveData() {
@@ -60,6 +61,12 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
         when (isLoading) {
             true -> _binding.loader.visibility = View.VISIBLE
             else -> _binding.loader.visibility = View.GONE
+        }
+    }
+
+    private fun initViewListeners() {
+        _binding.fakeSearch.setOnClickListener {
+            addFragmentAnimated(SearchCryptoFragment.newInstance(), addToBackStack = true)
         }
     }
 
