@@ -23,6 +23,7 @@ ext{
     //DI
     hilt_version = "2.35"
     hilt_liecycle_version = "1.0.0-alpha03"
+
     //Retrofit
     retrofit_version = "2.9.0"
 
