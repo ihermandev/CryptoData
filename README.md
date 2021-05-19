@@ -19,4 +19,6 @@ This is app example built with
 
 # Demo
 
+<p align="center">
 <img src="https://media.giphy.com/media/9uKZLWaFGBCAu7YKbF/giphy.gif" />
+</p>
