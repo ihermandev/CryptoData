@@ -5,18 +5,18 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
-apply from: "$rootDir/dependencies.gradle"
+apply from: "$rootDir/gradle/versions.gradle"
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+
+    compileSdkVersion androidCompileSdk
 
     defaultConfig {
         applicationId "i.herman.cryptodata"
-        minSdkVersion 24
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion androidMinSdk
+        targetSdkVersion androidTargetSdk
+        versionCode versionCode
+        versionName versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,6 +31,7 @@ android {
         }
         debug {
             applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             buildConfigField("String", "BASE_API_URL", '"https://gist.githubusercontent.com/izzi888/fa2efec7a9882238e7511a7020581bee/"')
@@ -39,11 +40,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     buildFeatures {
@@ -56,60 +57,58 @@ android {
 }
 
 dependencies {
-    //Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //AndroidX libs
-    implementation "androidx.core:core-ktx:$core_ktx_version"
-    implementation "androidx.appcompat:appcompat:$appcompat_vesrion"
-    implementation "com.google.android.material:material:$material_vesrion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
-    implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_viewmodel"
-    implementation "androidx.legacy:legacy-support-v4:$legacy_version"
-    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.appcompat:appcompat:$appcompatVesrion"
+    implementation "com.google.android.material:material:$materialVesrion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleLivedata"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewmodel"
+    implementation "androidx.legacy:legacy-support-v4:$legacyVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
 
     //Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
     //Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     // DI Dagger Hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_liecycle_version"
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltLiecycleVersion"
 
     //My lib with frequently used extensions
-    implementation "com.github.izzi888:UsefulKotlinUtil:$izzi888_version"
+    implementation "com.github.izzi888:UsefulKotlinUtil:$izzi888Version"
 
     //Glide
-    implementation "com.github.bumptech.glide:glide:$glide_version"
-    implementation "com.github.bumptech.glide:annotations:$glide_version"
-    implementation "com.github.bumptech.glide:okhttp3-integration:$glide_version"
-    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation "com.github.bumptech.glide:annotations:$glideVersion"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
 
     //Room
-    implementation "androidx.room:room-ktx:$room_version"
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 
     //Testing
-    implementation "com.jakewharton.espresso:okhttp3-idling-resource:$okhttp3_idling_version"
-    testImplementation "junit:junit:$junit_version"
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
-    testImplementation "org.mockito:mockito-inline:$mockito_inline_version"
-    testImplementation "androidx.arch.core:core-testing:$androix_core_testing_version"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
+    implementation "com.jakewharton.espresso:okhttp3-idling-resource:$okhttp3IdlingVersion"
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoInlineVersion"
+    testImplementation "androidx.arch.core:core-testing:$androixCoreTestingVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
 
-    androidTestImplementation "com.jakewharton.espresso:okhttp3-idling-resource:$okhttp3_idling_version"
-    androidTestImplementation "androidx.test:runner:$androidx_test_runner_vesrion"
-    androidTestImplementation "androidx.test.ext:junit:$androidx_test_junit_vesrion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso_version"
-    androidTestImplementation("com.schibsted.spain:barista:$barista_version") {
+    androidTestImplementation "com.jakewharton.espresso:okhttp3-idling-resource:$okhttp3IdlingVersion"
+    androidTestImplementation "androidx.test:runner:$androidxTestRunnerVesrion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxTestJunitVesrion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoVersion"
+    androidTestImplementation("com.adevinta.android:barista:$baristaVersion") {
         exclude group: 'org.jetbrains.kotlin'
     }
 }

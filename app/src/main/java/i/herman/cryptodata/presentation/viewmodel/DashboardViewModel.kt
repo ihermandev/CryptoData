@@ -23,7 +23,10 @@ class DashboardViewModel @Inject constructor(
     }
 
     val cryptoList = liveData {
-        emitSource(repository.getCrypto()
-            .asLiveData())
+        emitSource(repository.getCrypto().asLiveData())
+    }
+
+    val apiCrypto = liveData {
+        emitSource(repository.getApiCrypto().asLiveData())
     }
 }
