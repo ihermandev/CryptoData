@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import i.herman.cryptodata.R
 import i.herman.cryptodata.databinding.FragmentCryptoDetailBinding
 import i.herman.cryptodata.utils.downloadImage
+import timber.log.Timber
 
 /**
  * Created by Illia Herman on 18.05.2021.
@@ -36,7 +37,7 @@ class CryptoDetailFragment : BaseFragment(R.layout.fragment_crypto_detail) {
 
     private fun initView() {
         dashboardViewModel.selectedItem.observe(getMainActivity(), Observer { item ->
-            Log.i(TAG, "initView for data: $item")
+            Timber.i("initView for data: $item")
             item.apply {
                 _binding.tvTitle.text = item.coin_name
                 _binding.tvSubTitle.text = item.acronym

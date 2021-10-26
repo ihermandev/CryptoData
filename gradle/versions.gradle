@@ -5,8 +5,8 @@ ext{
     androidTargetSdk = 31
 
     //Application
-    versionCode = 1
-    versionName = "1.0.0_$versionCode"
+    versionCode = 2
+    versionName = "1.0.1_$versionCode"
 
     //Environment
     toolsVersion = "7.0.2"
@@ -38,6 +38,7 @@ ext{
 
     //Third Party
     glideVersion = "4.12.0"
+    timberVersion = "5.0.1"
     izzi888Version = "1.0.1"
 
     //Testing

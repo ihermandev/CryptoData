@@ -57,7 +57,6 @@ android {
 }
 
 dependencies {
-
     //AndroidX libs
     implementation "androidx.core:core-ktx:$coreKtxVersion"
     implementation "androidx.appcompat:appcompat:$appcompatVesrion"
@@ -95,6 +94,9 @@ dependencies {
     implementation "androidx.room:room-ktx:$roomVersion"
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
+
+    //Log
+    implementation "com.jakewharton.timber:timber:$timberVersion"
 
     //Testing
     implementation "com.jakewharton.espresso:okhttp3-idling-resource:$okhttp3IdlingVersion"
