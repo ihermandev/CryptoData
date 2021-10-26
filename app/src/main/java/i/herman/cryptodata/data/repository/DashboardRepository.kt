@@ -4,8 +4,12 @@ import android.util.Log
 import androidx.room.withTransaction
 import i.herman.cryptodata.data.db.CryptoDatabase
 import i.herman.cryptodata.data.db.dao.CryptoDao
+import i.herman.cryptodata.data.db.entity.CryptoModel
 import i.herman.cryptodata.data.remote.CryptoApi
 import i.herman.cryptodata.utils.networkBoundResource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -19,20 +23,20 @@ class DashboardRepository @Inject constructor(
 
     fun getCrypto() = networkBoundResource(
         fetchFromLocal = {
-            Log.i(TAG, "Fetching from local cache")
+            Timber.i("Fetching from local cache")
             cryptoDao.getAllCrypto()
         },
         shouldFetchFromRemote = {
             val isRemoteNeeded = it.isNullOrEmpty()
-            Log.i(TAG, "Is remote fetch needed? --> $isRemoteNeeded")
+            Timber.i("Is remote fetch needed? --> $isRemoteNeeded")
             isRemoteNeeded
         },
         fetchFromRemote = {
-            Log.i(TAG, "Fetching from remote server")
+            Timber.i("Fetching from remote server")
             api.getAllCrypto()
         },
         saveRemoteData = {
-            Log.i(TAG, "Saving from remote data to local cache")
+            Timber.i("Saving from remote data to local cache")
             db.withTransaction {
                 cryptoDao.deleteAllCrypto()
                 cryptoDao.insertList(it)
@@ -40,7 +44,5 @@ class DashboardRepository @Inject constructor(
         }
     )
 
-    companion object{
-        val TAG: String = DashboardRepository::class.java.simpleName
-    }
+    suspend fun getApiCrypto(): Flow<List<CryptoModel>> = flow { api.getAllCrypto() }
 }

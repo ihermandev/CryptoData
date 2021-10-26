@@ -12,6 +12,7 @@ import i.herman.cryptodata.data.db.entity.CryptoModel
 import i.herman.cryptodata.databinding.FragmentDashboardBinding
 import i.herman.cryptodata.presentation.adapter.CryptoRecyclerAdapter
 import i.herman.cryptodata.utils.ApiResponse
+import timber.log.Timber
 
 @AndroidEntryPoint
 class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
@@ -50,8 +51,8 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
     }
 
     private fun setupRecyclerView(data: List<CryptoModel>) {
-        Log.i(TAG, "Setup recycler view with data: $data")
-        _binding.rvList.adapter = CryptoRecyclerAdapter(data){
+        Timber.i("Setup recycler view with data: $data")
+        _binding.rvList.adapter = CryptoRecyclerAdapter(data) {
             dashboardViewModel.selectItem(it)
             addFragmentAnimated(CryptoDetailFragment.newInstance(), addToBackStack = true)
         }

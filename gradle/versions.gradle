@@ -1,0 +1,55 @@
+ext{
+    //SDK
+    androidMinSdk = 24
+    androidCompileSdk = 31
+    androidTargetSdk = 31
+
+    //Application
+    versionCode = 2
+    versionName = "1.0.1_$versionCode"
+
+    //Environment
+    toolsVersion = "7.0.2"
+    kotlinVersion = "1.5.31"
+
+    //AndroidX
+    coreKtxVersion = "1.6.0"
+    appcompatVesrion = "1.3.1"
+    materialVesrion = "1.4.0"
+    constraintlayoutVersion = "2.1.1"
+    fragmentKtxVersion = "1.3.6"
+    lifecycleLivedata = "2.3.1"
+    lifecycleViewmodel = "2.4.0-rc01"
+    legacyVersion = "1.0.0"
+    recyclerviewVersion = "1.2.1"
+
+    //Coroutines
+    coroutinesVersion = "1.5.2"
+
+    //Room
+    roomVersion = "2.3.0"
+
+    //DI
+    hiltVersion = "2.39.1"
+    hiltLiecycleVersion = "1.0.0-alpha03"
+
+    //Retrofit
+    retrofitVersion = "2.9.0"
+
+    //Third Party
+    glideVersion = "4.12.0"
+    timberVersion = "5.0.1"
+    izzi888Version = "1.0.1"
+
+    //Testing
+    okhttp3IdlingVersion = "1.0.0"
+    junitVersion = "4.13.1"
+    mockitoKotlinVersion = "2.1.0"
+    mockitoInlineVersion = "2.21.0"
+    androixCoreTestingVersion = "2.1.0"
+    coroutinesTestVersion = "1.3.8"
+    androidxTestRunnerVesrion = "1.4.0"
+    androidxTestJunitVesrion = "1.1.3"
+    androidxEspressoVersion = "3.4.0"
+    baristaVersion = "4.2.0"
+}

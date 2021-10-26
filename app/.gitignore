@@ -1,1 +1,13 @@
+*.iml
+.gradle
+/.idea
+.DS_Store
 /build
+/captures
+.externalNativeBuild
+mock_commit_hash
+/true
+projectFilesBackup*
+/secrets
+# Built application files
+*.apk
