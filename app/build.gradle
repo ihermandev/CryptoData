@@ -79,7 +79,6 @@ dependencies {
     // DI Dagger Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltLiecycleVersion"
 
     //My lib with frequently used extensions
     implementation "com.github.izzi888:UsefulKotlinUtil:$izzi888Version"
